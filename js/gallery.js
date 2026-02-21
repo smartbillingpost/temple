@@ -10,7 +10,7 @@ fetch("gallery.txt")
 
       div.innerHTML = `
         <img src="images/${img.trim()}" 
-        class="w-full object-contain hover:scale-105 transition duration-300">
+        class="w-full h-auto hover:scale-105 transition duration-300">
       `;
 
       gallery.appendChild(div);
