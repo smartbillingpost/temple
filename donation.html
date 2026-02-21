@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Donate | Annapurna Kashi Temple</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: "#ea580c",
+gold: "#d4af37",
+cream: "#fff7ed",
+shiva: "#1e3a8a"
+}
+}
+}
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body { font-family: 'Inter', sans-serif; }
+.heading { font-family: 'Playfair Display', serif; }
+</style>
+</head>
+
+<body class="bg-cream text-gray-800">
+
+<!-- NAVBAR -->
+<nav class="bg-white/80 backdrop-blur shadow fixed w-full z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+<h1 class="heading text-sm md:text-xl font-bold text-primary">
+Annapurna Kashi Temple
+</h1>
+
+<div class="hidden md:flex gap-6 font-medium">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="seva.html">Seva</a>
+<a href="gallery.html">Gallery</a>
+<a href="management.html">Management</a>
+<a href="contact.html">Contact</a>
+<a href="donation.html" class="text-primary font-semibold">Donate</a>
+</div>
+
+<button id="menuBtn" class="md:hidden text-primary text-2xl">☰</button>
+</div>
+
+<div id="mobileMenu" class="hidden md:hidden bg-white px-6 pb-4">
+<a href="index.html" class="block py-2">Home</a>
+<a href="about.html" class="block py-2">About</a>
+<a href="seva.html" class="block py-2">Seva</a>
+<a href="gallery.html" class="block py-2">Gallery</a>
+<a href="management.html" class="block py-2">Management</a>
+<a href="contact.html" class="block py-2">Contact</a>
+<a href="donation.html" class="block py-2">Donate</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-32 pb-16 bg-white text-center">
+<h2 class="heading text-4xl text-primary mb-4">Support the Temple</h2>
+<p class="text-gray-600">Your donation helps daily poojas, annadanam, festivals, and temple development.</p>
+</section>
+
+<!-- DONATION DETAILS -->
+<section class="py-20">
+<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+
+<!-- Bank Details -->
+<div class="bg-white shadow rounded-xl p-8">
+<h3 class="heading text-2xl text-primary mb-6">Bank Transfer</h3>
+
+<p class="mb-2"><strong>Account Name:</strong> Annapurna Sameta Kashi Vishweshwara Swamy Temple</p>
+<p class="mb-2"><strong>Bank:</strong> XXXXX Bank</p>
+<p class="mb-2"><strong>Account Number:</strong> XXXXXXXX</p>
+<p class="mb-2"><strong>IFSC Code:</strong> XXXXXXXX</p>
+<p class="mb-4"><strong>Branch:</strong> Narasingapadu</p>
+
+<p class="text-sm text-gray-500">
+Please share transaction details with temple office for receipt.
+</p>
+</div>
+
+<!-- UPI & QR -->
+<div class="bg-white shadow rounded-xl p-8 text-center">
+<h3 class="heading text-2xl text-primary mb-6">UPI / QR Payment</h3>
+
+<!-- Replace this image with your QR -->
+<img src="images/qr.jpg" alt="UPI QR" class="mx-auto w-64 mb-4">
+
+<p class="mb-2"><strong>UPI ID:</strong> temple@upi</p>
+
+<p class="text-sm text-gray-500">
+Scan the QR code or use UPI ID to donate instantly.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- PURPOSE -->
+<section class="bg-orange-50 py-20">
+<div class="max-w-5xl mx-auto px-6 text-center">
+
+<h3 class="heading text-3xl text-primary mb-6">Where Your Donation Goes</h3>
+
+<p class="text-gray-600">
+All donations are used for daily poojas, annadanam, temple maintenance, festival celebrations,
+and community service. The temple trust ensures transparency and proper utilization of funds.
+</p>
+
+</div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="py-20 text-center">
+<h3 class="heading text-3xl text-primary mb-4">Need Assistance?</h3>
+<p class="mb-6">Contact temple office for sponsorship and special donations.</p>
+
+<a href="contact.html" class="bg-primary text-white px-8 py-3 rounded-lg">
+Contact Temple
+</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-white py-10 text-center">
+© 2026 Annapurna Sameta Kashi Vishweshwara Swamy Temple
+</footer>
+
+<script>
+const btn = document.getElementById("menuBtn");
+const menu = document.getElementById("mobileMenu");
+btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+</script>
+
+</body>
+</html>
