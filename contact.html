@@ -14,7 +14,8 @@ extend: {
 colors: {
 primary: "#ea580c",
 gold: "#d4af37",
-cream: "#fff7ed"
+cream: "#fff7ed",
+shiva: "#1e3a8a"
 }
 }
 }
@@ -39,24 +40,26 @@ body { font-family: 'Inter', sans-serif; }
 Annapurna Kashi Temple
 </h1>
 
-<div class="hidden md:flex gap-6">
+<!-- Desktop -->
+<div class="hidden md:flex gap-6 font-medium">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="management.html">Management</a>
-      <a href="Seva.html">Seva</a>
+<a href="seva.html">Seva</a>
 <a href="gallery.html">Gallery</a>
+<a href="management.html">Management</a>
 <a href="contact.html" class="text-primary font-semibold">Contact</a>
 </div>
 
 <button id="menuBtn" class="md:hidden text-primary text-2xl">☰</button>
 </div>
 
+<!-- Mobile -->
 <div id="mobileMenu" class="hidden md:hidden bg-white px-6 pb-4">
 <a href="index.html" class="block py-2">Home</a>
 <a href="about.html" class="block py-2">About</a>
-<a href="management.html" class="block py-2">Management</a>
-  <a href="seva.html" class="block py-2">Seva</a>
+<a href="seva.html" class="block py-2">Seva</a>
 <a href="gallery.html" class="block py-2">Gallery</a>
+<a href="management.html" class="block py-2">Management</a>
 <a href="contact.html" class="block py-2">Contact</a>
 </div>
 </nav>
@@ -97,7 +100,7 @@ WhatsApp
 
 <a href="https://maps.google.com/?q=Narasingapadu"
 target="_blank"
-class="border px-5 py-3 rounded-lg">
+class="border px-5 py-3 rounded-lg hover:bg-gray-100">
 Get Directions
 </a>
 
