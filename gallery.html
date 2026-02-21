@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gallery | Annapurna Kashi Temple</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: "#ea580c",
+gold: "#d4af37",
+cream: "#fff7ed"
+}
+}
+}
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body { font-family: 'Inter', sans-serif; }
+.heading { font-family: 'Playfair Display', serif; }
+</style>
+</head>
+
+<body class="bg-cream text-gray-800">
+
+<!-- NAVBAR -->
+<nav class="bg-white shadow fixed w-full z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+<h1 class="heading text-primary font-bold">Annapurna Kashi Temple</h1>
+
+<div class="hidden md:flex gap-6">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="management.html">Management</a>
+<a href="gallery.html" class="text-primary font-semibold">Gallery</a>
+<a href="contact.html">Contact</a>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-32 pb-10 text-center">
+<h2 class="heading text-4xl text-primary">Temple Gallery</h2>
+<p class="text-gray-600">Sacred moments and temple events</p>
+</section>
+
+<!-- GALLERY -->
+<section class="pb-20">
+<div class="max-w-7xl mx-auto px-6">
+
+<div id="gallery" class="grid md:grid-cols-3 gap-6"></div>
+
+</div>
+</section>
+
+<!-- ✅ Load dynamic gallery -->
+<script src="js/gallery.js"></script>
+
+</body>
+</html>
