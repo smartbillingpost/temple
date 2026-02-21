@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Temple | Annapurna Sameta Kashi Vishweshwara Swamy</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: "#ea580c",
+          gold: "#d4af37",
+          cream: "#fff7ed",
+          shiva: "#1e3a8a"
+        }
+      }
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .heading { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+
+<body class="bg-cream text-gray-800">
+
+<!-- NAVBAR -->
+<nav class="bg-white/80 backdrop-blur shadow fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <h1 class="heading text-sm md:text-xl font-bold text-primary">
+      Annapurna Kashi Temple
+    </h1>
+
+    <div class="hidden md:flex gap-6 font-medium">
+      <a href="main.html">Home</a>
+      <a href="about.html" class="text-primary font-semibold">About</a>
+      <a href="#">Seva</a>
+      <a href="#">Events</a>
+<a href="gallery.html">Gallery</a>
+      <a href="management.html">Management</a>
+    <a href="contact.html">Contact</a>
+    </div>
+
+    <button id="menuBtn" class="md:hidden text-primary text-2xl">☰</button>
+  </div>
+
+  <!-- Mobile -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white px-6 pb-4">
+    <a href="main.html" class="block py-2">Home</a>
+    <a href="about.html" class="block py-2">About</a>
+    <a href="management.html" class="block py-2">Management</a>
+    <a href="gallery.html" class="block py-2">Gallery</a>
+    <a href="contact.html" class="block py-2">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-32 pb-20 bg-white">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+
+    <h2 class="heading text-4xl md:text-5xl text-primary mb-6">
+      About Annapurna Sameta Kashi Vishweshwara Swamy Temple
+    </h2>
+
+    <p class="text-lg text-gray-600">
+      A sacred spiritual center at Narasingapadu dedicated to Lord Shiva and Goddess Annapurna.
+    </p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+
+    <img src="images/temple2.jpg" class="rounded-xl shadow">
+
+    <div>
+      <h3 class="heading text-3xl text-primary mb-4">About the Temple</h3>
+
+      <p class="mb-4">
+        The Annapurna Sameta Kashi Vishweshwara Swamy Temple at Narasingapadu
+        is a sacred shrine dedicated to Lord Shiva and Goddess Annapurna.
+        Devotees believe that worship here brings peace, prosperity,
+        and spiritual growth.
+      </p>
+
+      <p>
+        The temple reflects the sacred traditions of Kashi and serves as a
+        center of devotion, annadanam, and community welfare.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="bg-white py-20">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <h3 class="heading text-3xl text-primary mb-6 text-center">
+      Temple History
+    </h3>
+
+    <p class="mb-6">
+      According to local traditions, the temple has been a place of worship
+      for several decades. It was established with the devotion of local
+      villagers who wished to bring the divine energy of Kashi to their
+      region.
+    </p>
+
+    <p class="mb-6">
+      Lord Kashi Vishweshwara and Goddess Annapurna are worshipped together,
+      symbolizing wisdom and nourishment. Many devotees have experienced
+      divine blessings and miracles through sincere prayers.
+    </p>
+
+    <p>
+      The temple continues to grow with the support of devotees and the
+      temple committee, preserving spiritual traditions and Vedic rituals.
+    </p>
+
+  </div>
+</section>
+
+<!-- FESTIVALS -->
+<section class="py-20">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h3 class="heading text-3xl text-center text-primary mb-10">
+      Festivals & Rituals
+    </h3>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="font-bold mb-2">Maha Shivaratri</h4>
+        <p>Grand abhishekam and night prayers.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="font-bold mb-2">Navaratri</h4>
+        <p>Special poojas and annadanam.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="font-bold mb-2">Karthika Masam</h4>
+        <p>Deepotsavam and sacred rituals.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-white py-10">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p>© 2026 Annapurna Sameta Kashi Vishweshwara Swamy Temple.</p>
+  </div>
+</footer>
+
+<script>
+const btn = document.getElementById("menuBtn");
+const menu = document.getElementById("mobileMenu");
+btn.addEventListener("click", () => {
+  menu.classList.toggle("hidden");
+});
+</script>
+
+</body>
+</html>
