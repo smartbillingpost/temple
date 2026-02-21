@@ -6,11 +6,11 @@ fetch("gallery.txt")
 
     images.forEach(img => {
       const div = document.createElement("div");
-      div.className = "overflow-hidden rounded-xl shadow hover:shadow-lg bg-white";
+      div.className = "rounded-xl shadow hover:shadow-lg bg-white p-3";
 
       div.innerHTML = `
         <img src="images/${img.trim()}" 
-        class="w-full h-64 object-contain hover:scale-105 transition duration-300 bg-white">
+        class="w-full object-contain hover:scale-105 transition duration-300">
       `;
 
       gallery.appendChild(div);
