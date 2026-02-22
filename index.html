@@ -39,37 +39,37 @@
       animation: fade 1.2s ease forwards;
     }
 
-   @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
 
-.animate-marquee {
-  display: inline-block;
-  min-width: 100%;
-  animation: marquee 25s linear infinite;
-}
-  </style>
- #audioPanel {
-  position: fixed;
-  top: 97px;
-  right: 0;
-  width: 300px;
-  max-height: calc(100vh - 100px);
-  overflow-y: auto;
-  background: #fff;
-  border-left: 3px solid #ea580c;
-  box-shadow: -6px 0 24px rgba(0,0,0,0.15);
-  z-index: 999;
-  transform: translateX(100%);
-  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
-  border-radius: 0 0 0 12px;
-}
-#audioPanel.open { transform: translateX(0); }
-.track-item { cursor: pointer; transition: background 0.15s; }
-.track-item:hover { background: #fff7ed; }
-.track-item.active { background: #fff1e6; border-left: 3px solid #ea580c; }
-#audioPlayerPanel { width: 100%; }
+    .animate-marquee {
+      display: inline-block;
+      min-width: 100%;
+      animation: marquee 25s linear infinite;
+    }
+
+    #audioPanel {
+      position: fixed;
+      top: 97px;
+      right: 0;
+      width: 300px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      background: #fff;
+      border-left: 3px solid #ea580c;
+      box-shadow: -6px 0 24px rgba(0,0,0,0.15);
+      z-index: 999;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+      border-radius: 0 0 0 12px;
+    }
+    #audioPanel.open { transform: translateX(0); }
+    .track-item { cursor: pointer; transition: background 0.15s; }
+    .track-item:hover { background: #fff7ed; }
+    .track-item.active { background: #fff1e6; border-left: 3px solid #ea580c; }
+    #audioPlayerPanel { width: 100%; }
   </style>
 </head>
 
@@ -84,7 +84,7 @@
     </h1>
 
     <!-- Desktop -->
-    <div class="hidden md:flex gap-6 font-medium">
+    <div class="hidden md:flex gap-6 font-medium items-center">
       <a href="index.html" class="text-primary font-semibold">Home</a>
       <a href="about.html">About</a>
       <a href="seva.html">Seva</a>
@@ -94,11 +94,11 @@
 Donate
 </a-->
       <a href="contact.html">Contact</a>
+      <button onclick="toggleAudioPanel()"
+          class="flex items-center gap-1 border border-primary text-primary px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-primary hover:text-white transition">
+        🎵 Audio
+      </button>
     </div>
-    <button onclick="toggleAudioPanel()"
-        class="flex items-center gap-1 border border-primary text-primary px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-primary hover:text-white transition">
-  🎵 Audio
-</button>
 
     <!-- Donate button -->
     <a href="donation.html" class="hidden md:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition">
@@ -118,19 +118,18 @@ Donate
     <a href="about.html" class="block py-2">About</a>
     <a href="seva.html" class="block py-2">Seva</a>
     <a href="gallery.html" class="block py-2">Gallery</a>
-<a href="donation.html"
-     class="block bg-primary text-white text-center py-2 mt-3 rounded-lg">
-    Donate
-  </a>
-      <a href="management.html" class="block py-2">Management</a>
+    <a href="donation.html" class="block bg-primary text-white text-center py-2 mt-3 rounded-lg">Donate</a>
+    <a href="management.html" class="block py-2">Management</a>
     <a href="contact.html" class="block py-2">Contact</a>
-
-      </div>
+  </div>
 </nav>
+
 <!-- SCROLLING MESSAGE -->
-<div class="bg-primary text-white py-2 overflow-hidden fixed left-0 w-full z-40" style="top:64px;">  
-      <div id="scrollMessage" class="whitespace-nowrap animate-marquee px-4"></div>
+<div class="bg-primary text-white py-2 overflow-hidden fixed left-0 w-full z-40" style="top:64px;">
+  <div id="scrollMessage" class="whitespace-nowrap animate-marquee px-4"></div>
 </div>
+
+<!-- AUDIO PANEL -->
 <div id="audioPanel">
   <div class="flex justify-between items-center px-4 py-3 bg-primary text-white">
     <span class="font-semibold text-sm">🎵 Devotional Audio</span>
@@ -182,26 +181,21 @@ Donate
   </div>
 </section>
 
-
 <!-- Panchang -->
 <section class="py-10 bg-white">
   <div class="max-w-3xl mx-auto px-6">
-
     <div class="bg-cream border border-orange-200 p-5 rounded-lg shadow text-center">
-
       <h3 class="heading text-lg md:text-xl text-primary mb-2">
         Today's Panchagam
       </h3>
-
       <p id="panchangText" class="text-gray-700 text-sm md:text-base">
         Loading...
       </p>
-
     </div>
   </div>
 </section>
 
-</section><!-- INTRO -->
+<!-- INTRO -->
 <section class="py-20">
   <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
@@ -274,6 +268,8 @@ Donate
     menu.classList.toggle("hidden");
   });
 </script>
+
+<!-- Scroll message -->
 <script>
   fetch("scroll.txt")
     .then(response => response.text())
@@ -285,6 +281,7 @@ Donate
         "Welcome to Annapurna Sameta Kashi Vishweshwara Swamy Temple";
     });
 </script>
+
 <!-- ADVERTISEMENT -->
 <div class="fixed bottom-5 right-5 z-50">
   <img src="images/advt.jpg"
@@ -292,8 +289,7 @@ Donate
        class="w-32 md:w-40 rounded-lg shadow-lg border">
 </div>
 
-
-<!-- AUDIO PLAYER -->
+<!-- AUDIO PLAYER SECTION -->
 <section class="py-12 bg-cream">
   <div class="max-w-4xl mx-auto px-6 text-center">
 
@@ -318,23 +314,21 @@ Donate
   </div>
 </section>
 
+<!-- Panchang script -->
 <script>
 async function loadPanchang() {
   try {
     const response = await fetch("panchang.json");
     const data = await response.json();
-
-    document.getElementById("panchangText").innerText =
-      data.today_panchang;
-
+    document.getElementById("panchangText").innerText = data.today_panchang;
   } catch (error) {
-    document.getElementById("panchangText").innerText =
-      "Panchang unavailable";
+    document.getElementById("panchangText").innerText = "Panchang unavailable";
   }
 }
-
 loadPanchang();
 </script>
+
+<!-- Dropdown audio player script -->
 <script>
 const select = document.getElementById("audioSelect");
 const player = document.getElementById("audioPlayer");
@@ -346,6 +340,8 @@ select.addEventListener("change", function () {
   }
 });
 </script>
+
+<!-- Audio panel script -->
 <script>
   function toTitle(filename) {
     return filename
@@ -408,5 +404,6 @@ select.addEventListener("change", function () {
     document.getElementById('audioPanel').classList.toggle('open', panelOpen);
   }
 </script>
+
 </body>
 </html>
