@@ -92,7 +92,7 @@ function getSamvatsaram(year) {
     "Rudhirodgari", "Raktakshi", "Krodhana", "Akshaya"
   ];
 
-  return samvatsarams[(year - 1987) % samvatsarams.length];
+  return samvatsarams[(year - 1986) % samvatsarams.length];
 }
 
 const currentYear = today.getFullYear();
