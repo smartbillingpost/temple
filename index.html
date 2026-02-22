@@ -329,8 +329,8 @@ tailwind.config = {
     playTrack((currentIdx + 1) % audioFiles.length);
   });
 
-  /* Dynamically load file list from audio/files.json */
-  fetch('audio/files.json')
+  /* Dynamically load file list from audio/audiofilelist.json */
+  fetch('audio/audiofilelist.json')
     .then(r => r.json())
     .then(files => {
       audioFiles = files;
