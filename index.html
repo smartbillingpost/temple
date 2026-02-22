@@ -281,18 +281,6 @@ tailwind.config = {
     });
 
   /* ── Audio panel ── */
-  // Add your filenames from the /audio/ folder here:
-  const audioFiles = [
-    "om_namah_shivaya.mp3",
-    "shiva_tandava.mp3",
-    "maha_mrityunjaya.mp3",
-    "annapurna_stotram.mp3",
-    "shiva_chalisa.mp3",
-    "rudrashtakam.mp3",
-    "lingashtakam.mp3",
-    "kashi_vishwanath_aarti.mp3"
-  ];
-
   function toTitle(filename) {
     return filename
       .replace(/\.[^.]+$/, '')
@@ -304,11 +292,15 @@ tailwind.config = {
   const trackList    = document.getElementById('trackList');
   const nowPlaying   = document.getElementById('nowPlaying');
   const nowPlayingNm = document.getElementById('nowPlayingName');
+  let audioFiles = [];
   let currentIdx = -1;
 
-  if (audioFiles.length === 0) {
-    trackList.innerHTML = '<p class="px-4 py-6 text-center text-gray-400">No audio files found.</p>';
-  } else {
+  function buildTrackList() {
+    trackList.innerHTML = '';
+    if (audioFiles.length === 0) {
+      trackList.innerHTML = '<p class="px-4 py-6 text-center text-gray-400">No audio files found.</p>';
+      return;
+    }
     audioFiles.forEach((file, idx) => {
       const div = document.createElement('div');
       div.className = 'track-item flex items-center gap-3 px-4 py-3';
@@ -336,6 +328,17 @@ tailwind.config = {
   audioPlayer.addEventListener('ended', () => {
     playTrack((currentIdx + 1) % audioFiles.length);
   });
+
+  /* Dynamically load file list from audio/files.json */
+  fetch('audio/files.json')
+    .then(r => r.json())
+    .then(files => {
+      audioFiles = files;
+      buildTrackList();
+    })
+    .catch(() => {
+      trackList.innerHTML = '<p class="px-4 py-6 text-center text-gray-400 text-xs">Could not load audio/files.json</p>';
+    });
 
   let panelOpen = false;
   function toggleAudioPanel() {
