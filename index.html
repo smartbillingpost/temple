@@ -38,6 +38,16 @@
     .animate-fade {
       animation: fade 1.2s ease forwards;
     }
+
+    @keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
   </style>
 </head>
 
@@ -91,6 +101,10 @@ Donate
 
       </div>
 </nav>
+<!-- SCROLLING MESSAGE -->
+<div class="bg-primary text-white py-2 overflow-hidden">
+  <div id="scrollMessage" class="whitespace-nowrap animate-marquee px-4"></div>
+</div>
 
 <!-- HERO -->
 <section class="relative h-screen flex items-center">
@@ -202,6 +216,23 @@ Donate
     menu.classList.toggle("hidden");
   });
 </script>
+<script>
+  fetch("scroll.txt")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("scrollMessage").innerText = data;
+    })
+    .catch(() => {
+      document.getElementById("scrollMessage").innerText =
+        "Welcome to Annapurna Sameta Kashi Vishweshwara Swamy Temple";
+    });
+</script>
+<!-- ADVERTISEMENT -->
+<div class="fixed bottom-5 right-5 z-50">
+  <img src="images/advt.jpg"
+       alt="Advertisement"
+       class="w-32 md:w-40 rounded-lg shadow-lg border">
+</div>
 
 </body>
 </html>
