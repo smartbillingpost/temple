@@ -50,6 +50,27 @@
   animation: marquee 25s linear infinite;
 }
   </style>
+  #audioPanel {
+  position: fixed;
+  top: 97px;
+  right: 0;
+  width: 300px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background: #fff;
+  border-left: 3px solid #ea580c;
+  box-shadow: -6px 0 24px rgba(0,0,0,0.15);
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+  border-radius: 0 0 0 12px;
+}
+#audioPanel.open { transform: translateX(0); }
+.track-item { cursor: pointer; transition: background 0.15s; }
+.track-item:hover { background: #fff7ed; }
+.track-item.active { background: #fff1e6; border-left: 3px solid #ea580c; }
+#audioPlayerPanel { width: 100%; }
+
 </head>
 
 <body class="bg-cream text-gray-800">
@@ -74,6 +95,10 @@ Donate
 </a-->
       <a href="contact.html">Contact</a>
     </div>
+    <button onclick="toggleAudioPanel()"
+        class="flex items-center gap-1 border border-primary text-primary px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-primary hover:text-white transition">
+  🎵 Audio
+</button>
 
     <!-- Donate button -->
     <a href="donation.html" class="hidden md:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition">
@@ -106,6 +131,19 @@ Donate
 <div class="bg-primary text-white py-2 overflow-hidden fixed top-16 left-0 w-full z-40">
   
       <div id="scrollMessage" class="whitespace-nowrap animate-marquee px-4"></div>
+</div>
+<div id="audioPanel">
+  <div class="flex justify-between items-center px-4 py-3 bg-primary text-white">
+    <span class="font-semibold text-sm">🎵 Devotional Audio</span>
+    <button onclick="toggleAudioPanel()" class="text-white hover:opacity-70 text-lg leading-none">✕</button>
+  </div>
+  <div class="px-2 pt-2">
+    <audio id="audioPlayerPanel" controls></audio>
+  </div>
+  <div id="nowPlaying" class="hidden px-4 py-2 text-xs text-orange-700 font-medium bg-orange-50 border-b border-orange-100 truncate">
+    ▶ <span id="nowPlayingName"></span>
+  </div>
+  <div id="trackList" class="divide-y divide-gray-100 text-sm"></div>
 </div>
 
 <!-- HERO -->
@@ -308,6 +346,68 @@ select.addEventListener("change", function () {
     player.play();
   }
 });
+</script>
+<script>
+  function toTitle(filename) {
+    return filename
+      .replace(/\.[^.]+$/, '')
+      .replace(/[_\-]+/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  const audioPlayerPanel = document.getElementById('audioPlayerPanel');
+  const trackList        = document.getElementById('trackList');
+  const nowPlaying       = document.getElementById('nowPlaying');
+  const nowPlayingName   = document.getElementById('nowPlayingName');
+  let audioFiles = [];
+  let currentIdx = -1;
+
+  function buildTrackList() {
+    trackList.innerHTML = '';
+    if (audioFiles.length === 0) {
+      trackList.innerHTML = '<p class="px-4 py-6 text-center text-gray-400">No audio files found.</p>';
+      return;
+    }
+    audioFiles.forEach((file, idx) => {
+      const div = document.createElement('div');
+      div.className = 'track-item flex items-center gap-3 px-4 py-3';
+      div.innerHTML = `
+        <span class="text-orange-400">🎵</span>
+        <span class="flex-1 truncate">${toTitle(file)}</span>
+        <span class="text-primary">▶</span>
+      `;
+      div.addEventListener('click', () => playTrack(idx));
+      trackList.appendChild(div);
+    });
+  }
+
+  function playTrack(idx) {
+    document.querySelectorAll('.track-item').forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+    currentIdx = idx;
+    audioPlayerPanel.src = 'audio/' + audioFiles[idx];
+    audioPlayerPanel.play();
+    nowPlayingName.textContent = toTitle(audioFiles[idx]);
+    nowPlaying.classList.remove('hidden');
+  }
+
+  audioPlayerPanel.addEventListener('ended', () => {
+    playTrack((currentIdx + 1) % audioFiles.length);
+  });
+
+  fetch('audio/audiofilelist.json')
+    .then(r => r.json())
+    .then(files => { audioFiles = files; buildTrackList(); })
+    .catch(() => {
+      trackList.innerHTML = '<p class="px-4 py-6 text-center text-gray-400 text-xs">Could not load audio/audiofilelist.json</p>';
+    });
+
+  let panelOpen = false;
+  function toggleAudioPanel() {
+    panelOpen = !panelOpen;
+    document.getElementById('audioPanel').classList.toggle('open', panelOpen);
+  }
 </script>
 </body>
 </html>
