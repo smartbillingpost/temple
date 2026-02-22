@@ -104,6 +104,14 @@ Donate
 </nav>
 <!-- SCROLLING MESSAGE -->
 <div class="bg-primary text-white py-2 overflow-hidden fixed top-16 left-0 w-full z-40">
+  <div class="flex justify-between items-center px-4">
+  <div id="scrollMessage" class="whitespace-nowrap animate-marquee"></div>
+
+  <button id="openAudio"
+    class="bg-white text-primary px-3 py-1 rounded ml-4 text-sm">
+    🔊 Audio
+  </button>
+</div>
       <div id="scrollMessage" class="whitespace-nowrap animate-marquee px-4"></div>
 </div>
 
@@ -279,6 +287,47 @@ Donate
 
   </div>
 </section>
+<script>
+const btn = document.getElementById("openAudio");
+const popup = document.getElementById("audioPopup");
+const select = document.getElementById("audioSelect");
+const player = document.getElementById("audioPlayer");
+
+// Toggle popup
+btn.onclick = () => {
+  popup.classList.toggle("hidden");
+};
+
+// Load audio list dynamically
+async function loadAudioList() {
+  try {
+    const res = await fetch("/audio-list");
+    const files = await res.json();
+
+    select.innerHTML = '<option value="">Select Audio</option>';
+
+    files.forEach(file => {
+      const option = document.createElement("option");
+      option.value = "audio/" + file;
+      option.textContent = file.replace(".mp3", "");
+      select.appendChild(option);
+    });
+
+  } catch (e) {
+    select.innerHTML = '<option>Error loading audio</option>';
+  }
+}
+
+// Play selected audio
+select.addEventListener("change", () => {
+  if (select.value) {
+    player.src = select.value;
+    player.play();
+  }
+});
+
+loadAudioList();
+</script>
 
 <script>
 async function loadPanchang() {
