@@ -144,6 +144,47 @@ Donate
   </div>
 </section>
 
+<!-- Panchang -->
+
+
+<!-- Panchang Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <h3 class="heading text-3xl text-center text-primary mb-8">
+      Today’s Panchang
+    </h3>
+
+    <div class="bg-cream p-8 rounded-xl shadow-lg text-center">
+
+      <p id="hindu-date" class="text-xl font-semibold text-shiva mb-4"></p>
+
+      <div class="grid md:grid-cols-4 gap-4 text-gray-700">
+        <div>
+          <p class="font-semibold">Tithi</p>
+          <p id="tithi">Loading...</p>
+        </div>
+
+        <div>
+          <p class="font-semibold">Nakshatra</p>
+          <p id="nakshatra">Loading...</p>
+        </div>
+
+        <div>
+          <p class="font-semibold">Paksha</p>
+          <p id="paksha">Loading...</p>
+        </div>
+
+        <div>
+          <p class="font-semibold">Month</p>
+          <p id="month">Loading...</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- INTRO -->
 <section class="py-20">
   <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
@@ -234,6 +275,19 @@ Donate
        alt="Advertisement"
        class="w-32 md:w-40 rounded-lg shadow-lg border">
 </div>
+<script>
+const today = new Date();
+const vikramYear = today.getFullYear() + 57;
+
+document.getElementById("hindu-date").innerHTML =
+  `Vikram Samvat ${vikramYear}`;
+
+/* Temporary static values (replace with API later) */
+document.getElementById("tithi").innerHTML = "Shukla Paksha Dwitiya";
+document.getElementById("nakshatra").innerHTML = "Ashwini";
+document.getElementById("paksha").innerHTML = "Shukla";
+document.getElementById("month").innerHTML = "Phalguna";
+</script>
 
 </body>
 </html>
