@@ -39,14 +39,15 @@
       animation: fade 1.2s ease forwards;
     }
 
-    @keyframes marquee {
+   @keyframes marquee {
   0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
 }
 
 .animate-marquee {
   display: inline-block;
-  animation: marquee 20s linear infinite;
+  min-width: 100%;
+  animation: marquee 25s linear infinite;
 }
   </style>
 </head>
@@ -102,8 +103,8 @@ Donate
       </div>
 </nav>
 <!-- SCROLLING MESSAGE -->
-<div class="bg-primary text-white py-2 overflow-hidden">
-  <div id="scrollMessage" class="whitespace-nowrap animate-marquee px-4"></div>
+<div class="bg-primary text-white py-2 overflow-hidden mt-16">
+    <div id="scrollMessage" class="whitespace-nowrap animate-marquee px-4"></div>
 </div>
 
 <!-- HERO -->
