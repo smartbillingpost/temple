@@ -50,7 +50,7 @@
   animation: marquee 25s linear infinite;
 }
   </style>
-  #audioPanel {
+ #audioPanel {
   position: fixed;
   top: 97px;
   right: 0;
@@ -70,7 +70,7 @@
 .track-item:hover { background: #fff7ed; }
 .track-item.active { background: #fff1e6; border-left: 3px solid #ea580c; }
 #audioPlayerPanel { width: 100%; }
-
+  </style>
 </head>
 
 <body class="bg-cream text-gray-800">
@@ -128,8 +128,7 @@ Donate
       </div>
 </nav>
 <!-- SCROLLING MESSAGE -->
-<div class="bg-primary text-white py-2 overflow-hidden fixed top-16 left-0 w-full z-40">
-  
+<div class="bg-primary text-white py-2 overflow-hidden fixed left-0 w-full z-40" style="top:64px;">  
       <div id="scrollMessage" class="whitespace-nowrap animate-marquee px-4"></div>
 </div>
 <div id="audioPanel">
