@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Annapurna Sameta Kashi Vishweshwara Swamy Temple</title>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <script>
   tailwind.config = {
     theme: {
@@ -23,7 +21,6 @@
   }
   </script>
 
-  <!-- Google font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -34,16 +31,12 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    .animate-fade {
-      animation: fade 1.2s ease forwards;
-    }
+    .animate-fade { animation: fade 1.2s ease forwards; }
 
     @keyframes marquee {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
-
     .animate-marquee {
       display: inline-block;
       min-width: 100%;
@@ -78,41 +71,26 @@
 <!-- NAVBAR -->
 <nav class="bg-white/80 backdrop-blur shadow fixed w-full z-50">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
     <h1 class="heading text-sm md:text-xl font-bold text-primary">
       Annapurna Sameta Kashi Vishwanatha Temple
     </h1>
-
-    <!-- Desktop -->
     <div class="hidden md:flex gap-6 font-medium items-center">
       <a href="index.html" class="text-primary font-semibold">Home</a>
       <a href="about.html">About</a>
       <a href="seva.html">Seva</a>
       <a href="gallery.html">Gallery</a>
       <a href="management.html">Management</a>
-      <!--a href="donation.html" class="hidden md:block bg-primary text-white px-4 py-2 rounded-lg">
-Donate
-</a-->
       <a href="contact.html">Contact</a>
       <button onclick="toggleAudioPanel()"
           class="flex items-center gap-1 border border-primary text-primary px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-primary hover:text-white transition">
         🎵 Audio
       </button>
     </div>
-
-    <!-- Donate button -->
     <a href="donation.html" class="hidden md:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition">
       Donate
     </a>
-
-    <!-- Mobile button -->
-    <button id="menuBtn" class="md:hidden text-primary text-2xl">
-      ☰
-    </button>
-
+    <button id="menuBtn" class="md:hidden text-primary text-2xl">☰</button>
   </div>
-
-  <!-- Mobile -->
   <div id="mobileMenu" class="hidden md:hidden bg-white px-6 pb-4">
     <a href="index.html" class="block py-2">Home</a>
     <a href="about.html" class="block py-2">About</a>
@@ -146,38 +124,26 @@ Donate
 
 <!-- HERO -->
 <section class="relative h-screen flex items-center">
-
-  <!-- Background image -->
   <div class="absolute inset-0 bg-cover bg-center"
-       style="background-image:url('images/temple.jpg')">
-  </div>
-
-  <!-- Gradient -->
+       style="background-image:url('images/temple.jpg')"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
-
-  <!-- Content -->
   <div class="relative max-w-6xl mx-auto px-6 text-white">
-
     <h2 class="heading text-4xl md:text-6xl font-bold leading-tight mb-6 animate-fade">
       Annapurna Sameta <br>
       Kashi Vishweshwara Swamy
     </h2>
-
     <p class="text-lg md:w-2/3 mb-8 text-gray-200">
       Welcome to the sacred temple at Narasingapadu. Experience divine peace,
       daily poojas, festivals, annadanam, and spiritual blessings.
     </p>
-
     <div class="flex flex-wrap gap-4">
       <a href="seva.html" class="bg-primary px-7 py-3 rounded-lg font-semibold hover:bg-orange-700 transition">
         Book Seva
       </a>
-
       <a href="#" class="border border-white px-7 py-3 rounded-lg hover:bg-white hover:text-black transition">
         Live Darshan
       </a>
     </div>
-
   </div>
 </section>
 
@@ -185,12 +151,8 @@ Donate
 <section class="py-10 bg-white">
   <div class="max-w-3xl mx-auto px-6">
     <div class="bg-cream border border-orange-200 p-5 rounded-lg shadow text-center">
-      <h3 class="heading text-lg md:text-xl text-primary mb-2">
-        Today's Panchagam
-      </h3>
-      <p id="panchangText" class="text-gray-700 text-sm md:text-base">
-        Loading...
-      </p>
+      <h3 class="heading text-lg md:text-xl text-primary mb-2">Today's Panchagam</h3>
+      <p id="panchangText" class="text-gray-700 text-sm md:text-base">Loading...</p>
     </div>
   </div>
 </section>
@@ -198,106 +160,43 @@ Donate
 <!-- INTRO -->
 <section class="py-20">
   <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-
     <img src="images/temple.jpg" class="rounded-xl shadow">
-
     <div>
-      <h3 class="heading text-3xl mb-4 text-primary">
-        About the Temple
-      </h3>
-
+      <h3 class="heading text-3xl mb-4 text-primary">About the Temple</h3>
       <p class="mb-6">
         The Annapurna Sameta Kashi Vishweshwara Swamy Temple at Narasingapadu
         is a sacred shrine dedicated to Lord Shiva and Goddess Annapurna.
       </p>
-
-      <a href="about.html" class="text-primary font-semibold">
-        Read More →
-      </a>
+      <a href="about.html" class="text-primary font-semibold">Read More →</a>
     </div>
-
   </div>
 </section>
 
 <!-- EVENTS -->
 <section class="bg-cream py-20">
   <div class="max-w-6xl mx-auto px-6">
-
-    <h3 class="heading text-3xl text-center mb-10 text-primary">
-      Upcoming Festivals
-    </h3>
-
+    <h3 class="heading text-3xl text-center mb-10 text-primary">Upcoming Festivals</h3>
     <div class="grid md:grid-cols-3 gap-8">
-
       <div class="bg-white p-6 rounded-xl shadow">
         <h4 class="font-bold mb-2">Maha Shivaratri</h4>
         <p>Grand celebrations, abhishekam, and night vigil.</p>
       </div>
-
       <div class="bg-white p-6 rounded-xl shadow">
         <h4 class="font-bold mb-2">Navaratri</h4>
         <p>Special poojas and annadanam.</p>
       </div>
-
       <div class="bg-white p-6 rounded-xl shadow">
         <h4 class="font-bold mb-2">Karthika Masam</h4>
         <p>Deepotsavam and sacred rituals.</p>
       </div>
-
     </div>
-
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-gray-900 text-white py-10">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <p>
-      © 2026 Annapurna Sameta Kashi Vishweshwara Swamy Temple,
-      Narasingapadu. All rights reserved.
-    </p>
-  </div>
-</footer>
-
-<!-- Mobile menu -->
-<script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
-
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
-
-<!-- Scroll message -->
-<script>
-  fetch("scroll.txt")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("scrollMessage").innerText = data;
-    })
-    .catch(() => {
-      document.getElementById("scrollMessage").innerText =
-        "Welcome to Annapurna Sameta Kashi Vishweshwara Swamy Temple";
-    });
-</script>
-
-<!-- ADVERTISEMENT -->
-<div class="fixed bottom-5 right-5 z-50">
-  <img src="images/advt.jpg"
-       alt="Advertisement"
-       class="w-32 md:w-40 rounded-lg shadow-lg border">
-</div>
-
-<!-- AUDIO PLAYER SECTION -->
+<!-- AUDIO PLAYER SECTION (Dropdown) -->
 <section class="py-12 bg-cream">
   <div class="max-w-4xl mx-auto px-6 text-center">
-
-    <h3 class="heading text-2xl text-primary mb-6">
-      Temple Audio
-    </h3>
-
-    <!-- Dropdown -->
+    <h3 class="heading text-2xl text-primary mb-6">Temple Audio</h3>
     <select id="audioSelect"
       class="border rounded-lg px-4 py-2 mb-4 w-full md:w-1/2">
       <option value="">Select Bhajan / Mantra</option>
@@ -305,43 +204,122 @@ Donate
       <option value="audio/lingashtakam.mp3">Lingashtakam</option>
       <option value="audio/omnamahshivaya.mp3">Om Namah Shivaya</option>
     </select>
-
-    <!-- Player -->
     <audio id="audioPlayer" controls class="w-full md:w-2/3 mx-auto">
       Your browser does not support audio.
     </audio>
-
   </div>
 </section>
 
-<!-- Panchang script -->
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-white py-10">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p>© 2026 Annapurna Sameta Kashi Vishweshwara Swamy Temple, Narasingapadu. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ADVERTISEMENT -->
+<div class="fixed bottom-5 right-5 z-50">
+  <img src="images/advt.jpg" alt="Advertisement"
+       class="w-32 md:w-40 rounded-lg shadow-lg border">
+</div>
+
+<!-- Mobile menu -->
 <script>
-async function loadPanchang() {
-  try {
-    const response = await fetch("panchang.json");
-    const data = await response.json();
-    document.getElementById("panchangText").innerText = data.today_panchang;
-  } catch (error) {
-    document.getElementById("panchangText").innerText = "Panchang unavailable";
-  }
-}
-loadPanchang();
+  document.getElementById("menuBtn").addEventListener("click", () => {
+    document.getElementById("mobileMenu").classList.toggle("hidden");
+  });
 </script>
 
-<!-- Dropdown audio player script -->
+<!-- Scroll message -->
+<script>
+  fetch("scroll.txt")
+    .then(r => r.text())
+    .then(data => { document.getElementById("scrollMessage").innerText = data; })
+    .catch(() => {
+      document.getElementById("scrollMessage").innerText =
+        "Welcome to Annapurna Sameta Kashi Vishweshwara Swamy Temple";
+    });
+</script>
+
+<!-- Panchang — calculated directly in browser, no panchang.json needed -->
+<script>
+(function() {
+  const today = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+
+  function getJulianDay(date) { return date / 86400000 + 2440587.5; }
+  function getSunLongitude(d) {
+    const g = (357.529 + 0.98560028 * d) % 360;
+    const q = (280.459 + 0.98564736 * d) % 360;
+    const L = q + 1.915 * Math.sin(g * Math.PI / 180) + 0.020 * Math.sin(2 * g * Math.PI / 180);
+    return (L + 360) % 360;
+  }
+  function getMoonLongitude(d) {
+    const L = (218.316 + 13.176396 * d) % 360;
+    const M = (134.963 + 13.064993 * d) % 360;
+    return (L + 6.289 * Math.sin(M * Math.PI / 180)) % 360;
+  }
+  function getUgadi(year) {
+    let date = new Date(year + "-03-01");
+    for (let i = 0; i < 60; i++) {
+      const d = getJulianDay(date) - 2451545.0;
+      if ((getMoonLongitude(d) - getSunLongitude(d) + 360) % 360 < 12) {
+        const u = new Date(date); u.setDate(date.getDate() + 1); return u;
+      }
+      date.setDate(date.getDate() + 1);
+    }
+    return new Date(year + "-03-25");
+  }
+
+  const samvatsarams = ["Prabhava","Vibhava","Shukla","Pramoda","Prajotpatti","Angirasa","Shrimukha","Bhava","Yuva","Dhata","Ishvara","Bahudhanya","Pramathi","Vikrama","Vrisha","Chitrabhanu","Svabhanu","Tarana","Parthiva","Vyaya","Sarvajit","Sarvadhari","Virodhi","Vikriti","Khara","Nandana","Vijaya","Jaya","Manmatha","Durmukhi","Hevilambi","Vilambi","Vikari","Sharvari","Plava","Subhakritu","Shobhakritu","Krodhi","Vishvavasu","Parabhava","Plavanga","Kilaka","Saumya","Sadharana","Virodhikrutu","Paridhavi","Pramadicha","Ananda","Rakshasa","Nala","Pingala","Kalayukti","Siddharthi","Raudra","Durmati","Dundubhi","Rudhirodgari","Raktakshi","Krodhana","Akshaya"];
+  const currentYear  = today.getFullYear();
+  const ugadi        = getUgadi(currentYear);
+  const useYear      = today < ugadi ? currentYear - 1 : currentYear;
+  const samvatsaram  = samvatsarams[(useYear - 1987) % 60];
+
+  const makara  = new Date(currentYear + "-01-14");
+  const karka   = new Date(currentYear + "-07-16");
+  const ayanam  = (today >= makara && today < karka) ? "Uttarayanam" : "Dakshinayanam";
+
+  const m    = today.getMonth() + 1;
+  const rutu = m<=2 ? "Shishira Rutu" : m<=4 ? "Vasanta Rutu" : m<=6 ? "Grishma Rutu" : m<=8 ? "Varsha Rutu" : m<=10 ? "Sharad Rutu" : "Hemanta Rutu";
+
+  const jd       = getJulianDay(today);
+  const d        = jd - 2451545.0;
+  const sunLong  = getSunLongitude(d);
+  const moonLong = getMoonLongitude(d);
+  const diff     = (moonLong - sunLong + 360) % 360;
+  const tithiNum = Math.floor(diff / 12) + 1;
+  const tithiNames = ["Pratipada","Dwitiya","Tritiya","Chaturthi","Panchami","Shashti","Saptami","Ashtami","Navami","Dashami","Ekadashi","Dwadashi","Trayodashi","Chaturdashi","Purnima","Pratipada","Dwitiya","Tritiya","Chaturthi","Panchami","Shashti","Saptami","Ashtami","Navami","Dashami","Ekadashi","Dwadashi","Trayodashi","Chaturdashi","Amavasya"];
+  const tithi   = tithiNames[tithiNum - 1];
+  const paksham = tithiNum <= 15 ? "Shukla Paksham" : "Krishna Paksham";
+
+  const lunarMonths = ["Chaitra Masam","Vaishakha Masam","Jyeshtha Masam","Ashadha Masam","Shravana Masam","Bhadrapada Masam","Ashwayuja Masam","Kartika Masam","Margashira Masam","Pushya Masam","Magha Masam","Phalguna Masam"];
+  const masam = lunarMonths[Math.floor(sunLong / 30) % 12];
+
+  const vara = ["Bhanu","Soma","Mangala","Budha","Guru","Shukra","Shani"][today.getDay()];
+
+  document.getElementById("panchangText").innerText =
+    `Sri ${samvatsaram} nama Samvatsaram, ${ayanam}, ${rutu}, ${masam}, ${paksham}, ${tithi}, ${vara} vasaraha`;
+})();
+</script>
+
+<!-- Dropdown audio player -->
 <script>
 const select = document.getElementById("audioSelect");
 const player = document.getElementById("audioPlayer");
-
 select.addEventListener("change", function () {
-  if (this.value) {
-    player.src = this.value;
-    player.play();
-  }
+  if (this.value) { player.src = this.value; player.play(); }
 });
 </script>
 
-<!-- Audio panel script -->
+<!-- =============================================
+  AUDIO PANEL SCRIPT — FIXED
+  Strategy:
+  1. Try to load audio/audiofilelist.json (dynamic file list).
+  2. If that fails, fall back to the hardcoded tracks in the
+     dropdown <select> so the panel always shows something.
+  Either way, the panel track list is populated.
+============================================= -->
 <script>
   function toTitle(filename) {
     return filename
@@ -354,13 +332,22 @@ select.addEventListener("change", function () {
   const trackList        = document.getElementById('trackList');
   const nowPlaying       = document.getElementById('nowPlaying');
   const nowPlayingName   = document.getElementById('nowPlayingName');
+
   let audioFiles = [];
   let currentIdx = -1;
+
+  // Hardcoded fallback tracks (mirrors the dropdown options)
+  const FALLBACK_TRACKS = [
+    "rudram.mp3",
+    "lingashtakam.mp3",
+    "omnamahshivaya.mp3"
+  ];
 
   function buildTrackList() {
     trackList.innerHTML = '';
     if (audioFiles.length === 0) {
-      trackList.innerHTML = '<p class="px-4 py-6 text-center text-gray-400">No audio files found.</p>';
+      trackList.innerHTML =
+        '<p class="px-4 py-6 text-center text-gray-400 text-xs">No audio files found.</p>';
       return;
     }
     audioFiles.forEach((file, idx) => {
@@ -369,7 +356,7 @@ select.addEventListener("change", function () {
       div.innerHTML = `
         <span class="text-orange-400">🎵</span>
         <span class="flex-1 truncate">${toTitle(file)}</span>
-        <span class="text-primary">▶</span>
+        <span class="text-primary text-xs">▶</span>
       `;
       div.addEventListener('click', () => playTrack(idx));
       trackList.appendChild(div);
@@ -388,14 +375,37 @@ select.addEventListener("change", function () {
   }
 
   audioPlayerPanel.addEventListener('ended', () => {
-    playTrack((currentIdx + 1) % audioFiles.length);
+    if (audioFiles.length > 0)
+      playTrack((currentIdx + 1) % audioFiles.length);
   });
 
+  // Load track list — handles BOTH valid JSON and broken format (one ["file.mp3"] per line)
   fetch('audio/audiofilelist.json')
-    .then(r => r.json())
-    .then(files => { audioFiles = files; buildTrackList(); })
+    .then(r => { if (!r.ok) throw new Error('missing'); return r.text(); })
+    .then(text => {
+      const files = [];
+      try {
+        // Try standard single-array JSON first
+        const parsed = JSON.parse(text);
+        if (Array.isArray(parsed)) files.push(...parsed);
+      } catch(e) {
+        // Broken format: each line is its own ["filename.mp3"] — parse line by line
+        text.split('\n').forEach(line => {
+          line = line.trim();
+          if (!line) return;
+          try {
+            const val = JSON.parse(line);
+            if (Array.isArray(val) && val.length > 0) files.push(val[0]);
+            else if (typeof val === 'string') files.push(val);
+          } catch(e2) { /* skip bad lines */ }
+        });
+      }
+      audioFiles = files.filter(Boolean);
+      buildTrackList();
+    })
     .catch(() => {
-      trackList.innerHTML = '<p class="px-4 py-6 text-center text-gray-400 text-xs">Could not load audio/audiofilelist.json</p>';
+      audioFiles = FALLBACK_TRACKS;
+      buildTrackList();
     });
 
   let panelOpen = false;
