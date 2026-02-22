@@ -5,204 +5,377 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Annapurna Sameta Kashi Vishweshwara Swamy Temple</title>
 
-  <!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: "#ea580c",
-        gold: "#d4af37",
-        cream: "#fff7ed",
-        shiva: "#1e3a8a"
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#ea580c",
+            gold: "#d4af37",
+            cream: "#fff7ed",
+            shiva: "#1e3a8a"
+          }
+        }
       }
     }
-  }
-}
-</script>
+  </script>
 
-  <!-- Google font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    .heading {
-      font-family: 'Playfair Display', serif;
-    }
+    body { font-family: 'Inter', sans-serif; }
+    .heading { font-family: 'Playfair Display', serif; }
+
     @keyframes fade {
       from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade { animation: fade 1.2s ease forwards; }
+
+    /* ── Thinner Marquee ── */
+    .marquee-bar {
+      background: linear-gradient(90deg, #9a3412, #ea580c, #9a3412);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 4px 0;          /* thinner: was ~8-10px */
+      font-size: 0.72rem;      /* slightly smaller text */
+      letter-spacing: 0.04em;
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: marqueeScroll 28s linear infinite;
+    }
+    @keyframes marqueeScroll {
+      from { transform: translateX(100vw); }
+      to   { transform: translateX(-100%); }
     }
 
-    .animate-fade {
-      animation: fade 1.2s ease forwards;
+    /* ── Audio Panel ── */
+    #audioPanel {
+      position: fixed;
+      top: 68px;          /* just below navbar */
+      right: 0;
+      width: 320px;
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+      background: #fff;
+      border-left: 3px solid #ea580c;
+      box-shadow: -6px 0 24px rgba(0,0,0,0.15);
+      z-index: 999;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+      border-radius: 0 0 0 12px;
+    }
+    #audioPanel.open { transform: translateX(0); }
+
+    .track-item {
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .track-item:hover { background: #fff7ed; }
+    .track-item.playing { background: #fff1e6; border-left: 3px solid #ea580c; }
+
+    /* Custom audio player controls */
+    #audioPlayer { width: 100%; margin-top: 4px; }
+    audio::-webkit-media-controls-panel { background: #fff7ed; }
+
+    /* Pulse animation on audio btn when playing */
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(234,88,12,0.5); }
+      70%  { box-shadow: 0 0 0 8px rgba(234,88,12,0); }
+      100% { box-shadow: 0 0 0 0 rgba(234,88,12,0); }
+    }
+    #audioBtnDesktop.playing,
+    #audioBtnMobile.playing {
+      animation: pulse-ring 1.4s infinite;
     }
   </style>
 </head>
 
 <body class="bg-cream text-gray-800">
-  <!-- NAVBAR -->
-<nav class="bg-white/80 backdrop-blur shadow fixed w-full z-50">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-    <h1 class="heading text-sm md:text-xl font-bold text-primary">
-      Annapurna Sameta Kashi Vishweshwara Swamy Temple
-    </h1>
-
-    <!-- Desktop menu -->
-    <div class="hidden md:flex gap-6 font-medium">
-      <a href="#" class="hover:text-primary transition">Home</a>
-      <a href="about.html">About</a>
-      <a href="#">Seva</a>
-      <a href="#">Events</a>
-<a href="gallery.html">Gallery</a>
-      <a href="management.html">Management</a>
-<a href="contact.html">Contact</a>    </div>
-
-    <!-- Donate button -->
-    <a href="#" class="hidden md:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition">
-      Donate
-    </a>
-
-    <!-- Mobile button -->
-    <button id="menuBtn" class="md:hidden text-primary text-2xl">
-      ☰
-    </button>
-
+  <!-- ══ MARQUEE (thinner) ══ -->
+  <div class="marquee-bar text-white font-medium">
+    <span class="marquee-track">
+      🙏&nbsp; Welcome to Annapurna Sameta Kashi Vishweshwara Swamy Temple, Narasingapadu &nbsp;|&nbsp;
+      🔔&nbsp; Maha Shivaratri Celebrations – Special Abhishekam &amp; Night Vigil &nbsp;|&nbsp;
+      🌺&nbsp; Daily Poojas: Pratah Pooja 6:00 AM &nbsp;|&nbsp; Madhyahna Pooja 12:00 PM &nbsp;|&nbsp; Sayam Pooja 6:30 PM &nbsp;|&nbsp;
+      🍛&nbsp; Annadanam every Sunday – All are welcome &nbsp;|&nbsp;
+      📞&nbsp; Contact: +91 98765 43210 &nbsp;|&nbsp;
+    </span>
   </div>
 
-  <!-- Mobile menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white px-6 pb-4">
-    <a href="#" class="block py-2">Home</a>
-    <a href="#" class="block py-2">About</a>
-    <a href="#" class="block py-2">Seva</a>
-    <a href="#" class="block py-2">Events</a>
-<a href="gallery.html" class="block py-2">Gallery</a>
-<a href="#" class="block py-2">Contact</a>
-    <a href="#" class="block bg-primary text-white text-center py-2 mt-2 rounded">
-      Donate
-    </a>
-  </div>
-</nav>
+  <!-- ══ NAVBAR ══ -->
+  <nav class="bg-white/80 backdrop-blur shadow fixed w-full z-50" style="top:29px">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-  <!-- HERO -->
-<section class="relative h-screen flex items-center">
+      <h1 class="heading text-sm md:text-xl font-bold text-primary">
+        Annapurna Sameta Kashi Vishweshwara Swamy Temple
+      </h1>
 
-  <!-- Background image -->
-  <div class="absolute inset-0 bg-cover bg-center"
-       style="background-image:url('images/temple.jpg')">
-  </div>
+      <!-- Desktop menu -->
+      <div class="hidden md:flex gap-6 font-medium items-center">
+        <a href="#"            class="hover:text-primary transition">Home</a>
+        <a href="about.html"   class="hover:text-primary transition">About</a>
+        <a href="#"            class="hover:text-primary transition">Seva</a>
+        <a href="#"            class="hover:text-primary transition">Events</a>
+        <a href="gallery.html" class="hover:text-primary transition">Gallery</a>
+        <a href="management.html" class="hover:text-primary transition">Management</a>
+        <a href="contact.html" class="hover:text-primary transition">Contact</a>
 
-  <!-- Gradient overlay -->
-  <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
+        <!-- 🎵 Audio button (desktop) -->
+        <button id="audioBtnDesktop"
+                onclick="toggleAudioPanel()"
+                title="Temple Audio"
+                class="flex items-center gap-1.5 bg-orange-50 border border-primary text-primary px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-primary hover:text-white transition">
+          🎵 Audio
+        </button>
+      </div>
 
-  <!-- Content -->
-  <div class="relative max-w-6xl mx-auto px-6 text-white">
-
-    <h2 class="heading text-4xl md:text-6xl font-bold leading-tight mb-6 animate-fade">
-      Annapurna Sameta <br>
-      Kashi Vishweshwara Swamy
-    </h2>
-
-    <p class="text-lg md:w-2/3 mb-8 text-gray-200">
-      Welcome to the sacred temple at Narasingapadu. Experience divine peace,
-      daily poojas, festivals, annadanam, and spiritual blessings.
-    </p>
-
-    <!-- Buttons -->
-    <div class="flex flex-wrap gap-4">
-      <a href="#" class="bg-primary px-7 py-3 rounded-lg font-semibold hover:bg-orange-700 transition">
-        Book Seva
+      <!-- Donate button -->
+      <a href="#" class="hidden md:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition ml-3">
+        Donate
       </a>
 
-      <a href="#" class="border border-white px-7 py-3 rounded-lg hover:bg-white hover:text-black transition">
-        Live Darshan
-      </a>
+      <!-- Mobile icons -->
+      <div class="flex md:hidden items-center gap-3">
+        <button id="audioBtnMobile"
+                onclick="toggleAudioPanel()"
+                title="Temple Audio"
+                class="text-primary text-xl">🎵</button>
+        <button id="menuBtn" class="text-primary text-2xl">☰</button>
+      </div>
+
     </div>
 
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white px-6 pb-4">
+      <a href="#"            class="block py-2">Home</a>
+      <a href="about.html"   class="block py-2">About</a>
+      <a href="#"            class="block py-2">Seva</a>
+      <a href="#"            class="block py-2">Events</a>
+      <a href="gallery.html" class="block py-2">Gallery</a>
+      <a href="contact.html" class="block py-2">Contact</a>
+      <a href="#" class="block bg-primary text-white text-center py-2 mt-2 rounded">Donate</a>
+    </div>
+  </nav>
+
+  <!-- ══ AUDIO PANEL ══ -->
+  <div id="audioPanel">
+    <div class="px-4 py-3 bg-gradient-to-r from-orange-600 to-orange-500 flex justify-between items-center">
+      <span class="text-white font-bold text-sm tracking-wide">🎵 Temple Devotional Audio</span>
+      <button onclick="toggleAudioPanel()" class="text-white text-lg leading-none hover:opacity-70">✕</button>
+    </div>
+
+    <!-- Hidden audio element -->
+    <audio id="audioPlayer" controls>
+      Your browser does not support audio.
+    </audio>
+
+    <!-- Now playing bar -->
+    <div id="nowPlaying" class="hidden px-4 py-2 bg-orange-50 border-b border-orange-100 text-xs text-orange-700 font-medium truncate">
+      ▶ <span id="nowPlayingName">-</span>
+    </div>
+
+    <!-- Track list -->
+    <div id="trackList" class="divide-y divide-gray-100">
+      <!-- populated by JS -->
+      <div class="px-4 py-6 text-center text-gray-400 text-sm" id="loadingMsg">
+        Loading audio files…
+      </div>
+    </div>
   </div>
 
-</section>
+  <!-- Overlay (click outside to close) -->
+  <div id="audioOverlay"
+       onclick="toggleAudioPanel()"
+       class="hidden fixed inset-0 z-40 bg-transparent"></div>
 
-  <!-- INTRO -->
+  <!-- ══ HERO ══ -->
+  <section class="relative h-screen flex items-center" style="margin-top:29px">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('images/temple.jpg')"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 text-white">
+      <h2 class="heading text-4xl md:text-6xl font-bold leading-tight mb-6 animate-fade">
+        Annapurna Sameta <br> Kashi Vishweshwara Swamy
+      </h2>
+      <p class="text-lg md:w-2/3 mb-8 text-gray-200">
+        Welcome to the sacred temple at Narasingapadu. Experience divine peace,
+        daily poojas, festivals, annadanam, and spiritual blessings.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#" class="bg-primary px-7 py-3 rounded-lg font-semibold hover:bg-orange-700 transition">Book Seva</a>
+        <a href="#" class="border border-white px-7 py-3 rounded-lg hover:bg-white hover:text-black transition">Live Darshan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ INTRO ══ -->
   <section class="py-20">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-
       <img src="images/temple.jpg" class="rounded-xl shadow">
-
       <div>
-        <h3 class="heading text-3xl mb-4 text-primary">
-          About the Temple
-        </h3>
-
+        <h3 class="heading text-3xl mb-4 text-primary">About the Temple</h3>
         <p class="mb-6">
           The Annapurna Sameta Kashi Vishweshwara Swamy Temple at Narasingapadu
           is a sacred shrine dedicated to Lord Shiva and Goddess Annapurna.
         </p>
-
-        <a href="#" class="text-primary font-semibold">
-          Read More →
-        </a>
+        <a href="#" class="text-primary font-semibold">Read More →</a>
       </div>
-
     </div>
   </section>
 
-  <!-- EVENTS -->
+  <!-- ══ EVENTS ══ -->
   <section class="bg-cream py-20">
     <div class="max-w-6xl mx-auto px-6">
-
-      <h3 class="heading text-3xl text-center mb-10 text-primary">
-        Upcoming Festivals
-      </h3>
-
+      <h3 class="heading text-3xl text-center mb-10 text-primary">Upcoming Festivals</h3>
       <div class="grid md:grid-cols-3 gap-8">
-
         <div class="bg-white p-6 rounded-xl shadow">
           <h4 class="font-bold mb-2">Maha Shivaratri</h4>
           <p>Grand celebrations, abhishekam, and night vigil.</p>
         </div>
-
         <div class="bg-white p-6 rounded-xl shadow">
           <h4 class="font-bold mb-2">Navaratri</h4>
           <p>Special poojas and annadanam.</p>
         </div>
-
         <div class="bg-white p-6 rounded-xl shadow">
           <h4 class="font-bold mb-2">Karthika Masam</h4>
           <p>Deepotsavam and sacred rituals.</p>
         </div>
-
       </div>
-
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ══ FOOTER ══ -->
   <footer class="bg-gray-900 text-white py-10">
     <div class="max-w-6xl mx-auto px-6 text-center">
-
-      <p>
-        © 2026 Annapurna Sameta Kashi Vishweshwara Swamy Temple,
-        Narasingapadu. All rights reserved.
-      </p>
-
+      <p>© 2026 Annapurna Sameta Kashi Vishweshwara Swamy Temple, Narasingapadu. All rights reserved.</p>
     </div>
   </footer>
 
-<!-- FIXED mobile menu script (must be at bottom) -->
-<script>
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("mobileMenu");
+  <!-- ══ SCRIPTS ══ -->
+  <script>
+    /* ── Mobile menu ── */
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    });
 
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
+    /* ────────────────────────────────────────────
+       AUDIO PANEL
+       ──────────────────────────────────────────── */
+
+    // ▸ List all files that exist in your /audio/ folder here.
+    //   Add / remove filenames as needed.
+    const audioFiles = [
+      "om_namah_shivaya.mp3",
+      "shiva_tandava.mp3",
+      "maha_mrityunjaya.mp3",
+      "annapurna_stotram.mp3",
+      "shiva_chalisa.mp3",
+      "rudrashtakam.mp3",
+      "lingashtakam.mp3",
+      "kashi_vishwanath_aarti.mp3"
+    ];
+
+    /* Pretty-print filename → title */
+    function toTitle(filename) {
+      return filename
+        .replace(/\.[^.]+$/, "")          // remove extension
+        .replace(/[_\-]+/g, " ")          // underscores/hyphens → spaces
+        .replace(/\b\w/g, c => c.toUpperCase()); // Title Case
+    }
+
+    const audioPlayer  = document.getElementById("audioPlayer");
+    const trackList    = document.getElementById("trackList");
+    const nowPlaying   = document.getElementById("nowPlaying");
+    const nowPlayingNm = document.getElementById("nowPlayingName");
+    const loadingMsg   = document.getElementById("loadingMsg");
+
+    let currentTrack = -1;
+
+    /* Build track list */
+    function buildTrackList() {
+      loadingMsg.remove();
+
+      if (audioFiles.length === 0) {
+        trackList.innerHTML = '<p class="px-4 py-6 text-center text-gray-400 text-sm">No audio files found in /audio/ folder.</p>';
+        return;
+      }
+
+      audioFiles.forEach((file, idx) => {
+        const div = document.createElement("div");
+        div.className = "track-item flex items-center gap-3 px-4 py-3";
+        div.dataset.idx = idx;
+        div.innerHTML = `
+          <span class="text-orange-400 text-lg track-icon">🎵</span>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-800 truncate">${toTitle(file)}</p>
+            <p class="text-xs text-gray-400 truncate">${file}</p>
+          </div>
+          <button class="text-primary hover:text-orange-700 text-lg play-btn" title="Play">▶</button>
+        `;
+        div.addEventListener("click", () => playTrack(idx));
+        trackList.appendChild(div);
+      });
+    }
+
+    function playTrack(idx) {
+      // Deselect old
+      document.querySelectorAll(".track-item").forEach(el => {
+        el.classList.remove("playing");
+        el.querySelector(".play-btn").textContent = "▶";
+        el.querySelector(".track-icon").textContent = "🎵";
+      });
+
+      currentTrack = idx;
+      const file = audioFiles[idx];
+      audioPlayer.src = `audio/${file}`;
+      audioPlayer.play();
+
+      // Highlight current
+      const item = trackList.children[idx];
+      item.classList.add("playing");
+      item.querySelector(".play-btn").textContent = "⏸";
+      item.querySelector(".track-icon").textContent = "🔊";
+
+      // Now-playing bar
+      nowPlayingNm.textContent = toTitle(file);
+      nowPlaying.classList.remove("hidden");
+
+      // Pulse audio btn
+      document.getElementById("audioBtnDesktop").classList.add("playing");
+      document.getElementById("audioBtnMobile").classList.add("playing");
+    }
+
+    /* Auto-advance to next track */
+    audioPlayer.addEventListener("ended", () => {
+      const next = (currentTrack + 1) % audioFiles.length;
+      playTrack(next);
+    });
+
+    /* Stop pulse when paused */
+    audioPlayer.addEventListener("pause", () => {
+      document.getElementById("audioBtnDesktop").classList.remove("playing");
+      document.getElementById("audioBtnMobile").classList.remove("playing");
+    });
+    audioPlayer.addEventListener("play", () => {
+      document.getElementById("audioBtnDesktop").classList.add("playing");
+      document.getElementById("audioBtnMobile").classList.add("playing");
+    });
+
+    /* Panel toggle */
+    let panelOpen = false;
+    function toggleAudioPanel() {
+      panelOpen = !panelOpen;
+      document.getElementById("audioPanel").classList.toggle("open", panelOpen);
+      document.getElementById("audioOverlay").classList.toggle("hidden", !panelOpen);
+    }
+
+    /* Init */
+    buildTrackList();
+  </script>
 
 </body>
 </html>
