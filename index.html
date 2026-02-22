@@ -255,6 +255,30 @@ Donate
 </div>
 
 
+<!-- AUDIO PLAYER -->
+<section class="py-12 bg-cream">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+
+    <h3 class="heading text-2xl text-primary mb-6">
+      Temple Audio
+    </h3>
+
+    <!-- Dropdown -->
+    <select id="audioSelect"
+      class="border rounded-lg px-4 py-2 mb-4 w-full md:w-1/2">
+      <option value="">Select Bhajan / Mantra</option>
+      <option value="audio/rudram.mp3">Sri Rudram</option>
+      <option value="audio/lingashtakam.mp3">Lingashtakam</option>
+      <option value="audio/omnamahshivaya.mp3">Om Namah Shivaya</option>
+    </select>
+
+    <!-- Player -->
+    <audio id="audioPlayer" controls class="w-full md:w-2/3 mx-auto">
+      Your browser does not support audio.
+    </audio>
+
+  </div>
+</section>
 
 <script>
 async function loadPanchang() {
@@ -272,6 +296,17 @@ async function loadPanchang() {
 }
 
 loadPanchang();
+</script>
+<script>
+const select = document.getElementById("audioSelect");
+const player = document.getElementById("audioPlayer");
+
+select.addEventListener("change", function () {
+  if (this.value) {
+    player.src = this.value;
+    player.play();
+  }
+});
 </script>
 </body>
 </html>
