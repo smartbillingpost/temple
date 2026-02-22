@@ -152,40 +152,24 @@ Donate
   <div class="max-w-5xl mx-auto px-6">
 
     <h3 class="heading text-3xl text-center text-primary mb-8">
-      Today’s Panchang
+      ఈరోజు పంచాంగము
     </h3>
 
     <div class="bg-cream p-8 rounded-xl shadow-lg text-center">
 
-      <p id="hindu-date" class="text-xl font-semibold text-shiva mb-4"></p>
+      <div class="grid md:grid-cols-2 gap-6 text-lg">
 
-      <div class="grid md:grid-cols-4 gap-4 text-gray-700">
-        <div>
-          <p class="font-semibold">Tithi</p>
-          <p id="tithi">Loading...</p>
-        </div>
+        <p>తిథి: <span id="tithi">లోడ్ అవుతోంది...</span></p>
+        <p>నక్షత్రం: <span id="nakshatra">లోడ్ అవుతోంది...</span></p>
+        <p>యోగం: <span id="yoga">లోడ్ అవుతోంది...</span></p>
+        <p>కరణం: <span id="karana">లోడ్ అవుతోంది...</span></p>
+        <p>సూర్యోదయం: <span id="sunrise">లోడ్ అవుతోంది...</span></p>
+        <p>రాహుకాలం: <span id="rahukalam">లోడ్ అవుతోంది...</span></p>
 
-        <div>
-          <p class="font-semibold">Nakshatra</p>
-          <p id="nakshatra">Loading...</p>
-        </div>
-
-        <div>
-          <p class="font-semibold">Paksha</p>
-          <p id="paksha">Loading...</p>
-        </div>
-
-        <div>
-          <p class="font-semibold">Month</p>
-          <p id="month">Loading...</p>
-        </div>
       </div>
-
     </div>
   </div>
-</section>
-
-<!-- INTRO -->
+</section><!-- INTRO -->
 <section class="py-20">
   <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
@@ -276,18 +260,60 @@ Donate
        class="w-32 md:w-40 rounded-lg shadow-lg border">
 </div>
 <script>
-const today = new Date();
-const vikramYear = today.getFullYear() + 57;
+async function loadPanchang() {
 
-document.getElementById("hindu-date").innerHTML =
-  `Vikram Samvat ${vikramYear}`;
+  const today = new Date().toISOString().split("T")[0];
 
-/* Temporary static values (replace with API later) */
-document.getElementById("tithi").innerHTML = "Shukla Paksha Dwitiya";
-document.getElementById("nakshatra").innerHTML = "Ashwini";
-document.getElementById("paksha").innerHTML = "Shukla";
-document.getElementById("month").innerHTML = "Phalguna";
+  // Check stored Panchang
+  const cachedData = localStorage.getItem("panchangData");
+  const cachedDate = localStorage.getItem("panchangDate");
+
+  if (cachedData && cachedDate === today) {
+    console.log("Using cached Panchang");
+
+    const data = JSON.parse(cachedData);
+    updateUI(data);
+    return;
+  }
+
+  try {
+    console.log("Fetching new Panchang");
+
+    const response = await fetch("YOUR_REAL_API_URL");
+
+    if (!response.ok) throw new Error("API error");
+
+    const data = await response.json();
+
+    // Save cache
+    localStorage.setItem("panchangData", JSON.stringify(data));
+    localStorage.setItem("panchangDate", today);
+
+    updateUI(data);
+
+  } catch (error) {
+    console.error("API failed, using old cache if available");
+
+    if (cachedData) {
+      const data = JSON.parse(cachedData);
+      updateUI(data);
+    } else {
+      document.getElementById("tithi").innerHTML =
+        "పంచాంగం అందుబాటులో లేదు";
+    }
+  }
+}
+
+function updateUI(data) {
+  document.getElementById("tithi").innerHTML = data.tithi_telugu || "—";
+  document.getElementById("nakshatra").innerHTML = data.nakshatra_telugu || "—";
+  document.getElementById("yoga").innerHTML = data.yoga_telugu || "—";
+  document.getElementById("karana").innerHTML = data.karana_telugu || "—";
+  document.getElementById("sunrise").innerHTML = data.sunrise || "—";
+  document.getElementById("rahukalam").innerHTML = data.rahukalam || "—";
+}
+
+loadPanchang();
 </script>
-
 </body>
 </html>
