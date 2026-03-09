@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sevas & Darshan | Annapurna Kashi Temple</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seva Booking | Annapurna Kashi Temple</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <script>
 tailwind.config = {
-theme: {
-extend: {
-colors: {
-primary: "#ea580c",
-gold: "#d4af37",
-cream: "#fff7ed"
+theme:{
+extend:{
+colors:{
+primary:"#ea580c",
+cream:"#fff7ed",
+gold:"#d4af37"
 }
 }
 }
@@ -24,167 +25,233 @@ cream: "#fff7ed"
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-body { font-family: 'Inter', sans-serif; }
-.heading { font-family: 'Playfair Display', serif; }
+body{font-family:'Inter',sans-serif}
+.heading{font-family:'Playfair Display',serif}
 </style>
 </head>
 
 <body class="bg-cream text-gray-800">
 
 <!-- NAVBAR -->
-<nav class="bg-white/80 backdrop-blur shadow fixed w-full z-50">
+<nav class="bg-white shadow fixed w-full z-50">
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
 <h1 class="heading text-primary font-bold">Annapurna Kashi Temple</h1>
 
-<!-- Desktop -->
-<div class="hidden md:flex gap-6 font-medium">
+<div class="hidden md:flex gap-6">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="seva.html" class="text-primary font-semibold">Seva</a>
 <a href="gallery.html">Gallery</a>
-<a href="management.html">Management</a>
 <a href="contact.html">Contact</a>
-
-<a href="donation.html"
-class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-orange-700">
-Donate
-</a>
 </div>
 
-<!-- Mobile button -->
-<button id="menuBtn" class="md:hidden text-primary text-2xl">☰</button>
-
+<button id="menuBtn" class="md:hidden text-2xl text-primary">☰</button>
 </div>
 
-<!-- Mobile menu -->
 <div id="mobileMenu" class="hidden md:hidden bg-white px-6 pb-4">
 <a href="index.html" class="block py-2">Home</a>
 <a href="about.html" class="block py-2">About</a>
 <a href="seva.html" class="block py-2">Seva</a>
 <a href="gallery.html" class="block py-2">Gallery</a>
-<a href="management.html" class="block py-2">Management</a>
 <a href="contact.html" class="block py-2">Contact</a>
-
-<a href="donation.html"
-class="block bg-primary text-white text-center py-2 mt-3 rounded-lg">
-Donate
-</a>
 </div>
-
 </nav>
 
-<!-- HERO -->
-<section class="pt-32 pb-10 text-center">
-<h2 class="heading text-4xl text-primary">Sevas & Darshan</h2>
-<p class="text-gray-600">Participate in divine rituals and receive blessings</p>
-</section>
+<!-- BOOK SEVA -->
+<section class="pt-32 pb-16">
 
-<!-- DARSHAN TIMINGS -->
-<section class="pb-20">
-<div class="max-w-6xl mx-auto px-6">
+<div class="max-w-5xl mx-auto bg-white shadow-lg rounded-xl p-8">
 
-<h3 class="heading text-3xl text-primary mb-8">Darshan Timings</h3>
+<h2 class="heading text-3xl text-primary mb-6 text-center">
+Book Your Seva
+</h2>
 
 <div class="grid md:grid-cols-2 gap-6">
 
-<div class="bg-white p-6 rounded-xl shadow">
-<h4 class="font-semibold text-lg mb-2">Morning Darshan</h4>
-<p>05:30 AM – 12:30 PM</p>
+<!-- SEVA SELECT -->
+<div>
+<label class="font-semibold">Select Seva</label>
+<select id="sevaSelect" class="w-full border p-3 rounded mt-1">
+<option value="">Choose Seva</option>
+<option value="500">Mahanyasapurvaka Ekadasa Rudrabhisekam</option>
+<option value="2000">Chandi Yagam & Chandiparayanam</option>
+<option value="1500">Rudra Homan & Rudra Yagam</option>
+<option value="300">Rahu Kethu Pooja (Sunday Only)</option>
+<option value="250">Kumkuma Pooja</option>
+<option value="1000">Swamy Vari Kalyanam</option>
+<option value="200">Bala Pooja</option>
+<option value="250">Suhashini Pooja</option>
+<option value="150">Vahana Pooja</option>
+<option value="300">Shanthi Pooja</option>
+<option value="400">Namakaranam (Barasala)</option>
+<option value="0">Other Poojas</option>
+</select>
 </div>
 
-<div class="bg-white p-6 rounded-xl shadow">
-<h4 class="font-semibold text-lg mb-2">Evening Darshan</h4>
-<p>04:30 PM – 08:30 PM</p>
+<!-- DATE -->
+<div>
+<label class="font-semibold">Select Date</label>
+<input type="date" class="w-full border p-3 rounded mt-1">
+</div>
+
+<!-- NAME -->
+<div>
+<label class="font-semibold">Name</label>
+<input type="text" class="w-full border p-3 rounded mt-1">
+</div>
+
+<!-- GOTHRAM -->
+<div>
+<label class="font-semibold">Gothram</label>
+<input type="text" class="w-full border p-3 rounded mt-1">
+</div>
+
+<!-- ADDRESS -->
+<div>
+<label class="font-semibold">Address</label>
+<input type="text" class="w-full border p-3 rounded mt-1">
+</div>
+
+<!-- PERSONS -->
+<div>
+<label class="font-semibold">No of Persons</label>
+<input type="number" class="w-full border p-3 rounded mt-1">
+</div>
+
+<!-- AMOUNT -->
+<div>
+<label class="font-semibold">Amount (₹)</label>
+<input id="amountBox" type="text" class="w-full border p-3 rounded mt-1 bg-gray-100" readonly>
 </div>
 
 </div>
 
+<div class="text-center mt-8">
+<button onclick="showQR()"
+class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-700">
+Proceed to Payment
+</button>
 </div>
+
+</div>
+
 </section>
 
-<!-- DAILY SEVAS -->
-<section class="bg-orange-50 py-20">
+<!-- QR PAYMENT -->
+<div id="qrBox" class="hidden text-center pb-16">
+
+<h3 class="heading text-2xl text-primary mb-4">
+Scan QR to Pay
+</h3>
+
+<img src="images/qr.png" class="mx-auto w-64 shadow-lg rounded-lg">
+
+<p class="mt-4 text-gray-600">
+After payment please share screenshot with temple office.
+</p>
+
+</div>
+
+<!-- SEVA DESCRIPTION -->
+<section class="pb-20">
+
 <div class="max-w-6xl mx-auto px-6">
 
-<h3 class="heading text-3xl text-primary mb-10">Daily Sevas</h3>
+<h3 class="heading text-3xl text-primary mb-10">
+Seva Descriptions
+</h3>
 
 <div class="grid md:grid-cols-3 gap-8">
 
 <div class="bg-white p-6 rounded-xl shadow">
-<h4 class="font-bold mb-2">Suprabhata Seva</h4>
-<p>Early morning ritual to wake the Lord.</p>
-<p class="text-primary font-semibold mt-2">Time: 5:00 AM</p>
+<h4 class="font-bold">Mahanyasapurvaka Ekadasa Rudrabhisekam</h4>
+<p>Powerful abhishekam with Vedic chanting of Rudram for spiritual purification and blessings.</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow">
-<h4 class="font-bold mb-2">Abhishekam</h4>
-<p>Milk, Panchamrut and sacred offerings.</p>
-<p class="text-primary font-semibold mt-2">Time: 6:00 AM</p>
+<h4 class="font-bold">Chandi Yagam & Chandiparayanam</h4>
+<p>Performed to invoke Divine Mother Durga for protection and prosperity.</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow">
-<h4 class="font-bold mb-2">Archana</h4>
-<p>Personalized pooja in devotee name.</p>
-<p class="text-primary font-semibold mt-2">Time: 7:00 AM</p>
+<h4 class="font-bold">Rudra Homan & Rudra Yagam</h4>
+<p>Sacred fire ritual dedicated to Lord Shiva for removing obstacles.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h4 class="font-bold">Rahu Kethu Pooja</h4>
+<p>Special pooja performed on Sundays to reduce planetary doshas.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h4 class="font-bold">Kumkuma Pooja</h4>
+<p>Devotional offering to Goddess Annapurna seeking family prosperity.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h4 class="font-bold">Swamy Vari Kalyanam</h4>
+<p>Divine wedding ceremony of Lord Shiva and Goddess Annapurna.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h4 class="font-bold">Bala Pooja</h4>
+<p>Prayer offered for children's well-being and good health.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h4 class="font-bold">Suhashini Pooja</h4>
+<p>Respectful worship of married women symbolizing divine feminine power.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h4 class="font-bold">Vahana Pooja</h4>
+<p>Blessings for new vehicles for safety and prosperity.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h4 class="font-bold">Shanthi Pooja</h4>
+<p>Performed to remove negative energies and bring peace.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h4 class="font-bold">Namakaranam (Barasala)</h4>
+<p>Traditional naming ceremony performed for newborn babies.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h4 class="font-bold">Other Poojas</h4>
+<p>Devotees can request customized poojas based on spiritual needs.</p>
 </div>
 
 </div>
 
 </div>
+
 </section>
 
-<!-- SPECIAL SEVAS -->
-<section class="py-20">
-<div class="max-w-6xl mx-auto px-6">
-
-<h3 class="heading text-3xl text-primary mb-10">Special Sevas</h3>
-
-<div class="grid md:grid-cols-3 gap-8">
-
-<div class="bg-white p-6 rounded-xl shadow">
-<h4 class="font-bold mb-2">Rudrabhishekam</h4>
-<p>Powerful ritual for health and prosperity.</p>
-</div>
-
-<div class="bg-white p-6 rounded-xl shadow">
-<h4 class="font-bold mb-2">Kalyanotsavam</h4>
-<p>Divine wedding ceremony of Lord Shiva and Annapurna.</p>
-</div>
-
-<div class="bg-white p-6 rounded-xl shadow">
-<h4 class="font-bold mb-2">Maha Annadanam</h4>
-<p>Offering food to devotees and the needy.</p>
-</div>
-
-</div>
-
-</div>
-</section>
-
-<!-- CONTACT CTA -->
-<section class="bg-primary text-white py-16 text-center">
-<h3 class="heading text-3xl mb-4">Book Seva or Annadanam</h3>
-<p class="mb-6">Contact temple office for seva booking and donations.</p>
-
-<a href="contact.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold">
-Contact Temple
-</a>
-</section>
-
-<!-- Mobile menu toggle -->
+<!-- SCRIPT -->
 <script>
+
+const sevaSelect = document.getElementById("sevaSelect");
+const amountBox = document.getElementById("amountBox");
+
+sevaSelect.addEventListener("change", function(){
+amountBox.value = this.value;
+});
+
+function showQR(){
+document.getElementById("qrBox").classList.remove("hidden");
+}
+
 const btn = document.getElementById("menuBtn");
 const menu = document.getElementById("mobileMenu");
-btn.addEventListener("click", () => {
+
+btn.addEventListener("click", ()=>{
 menu.classList.toggle("hidden");
 });
+
 </script>
-<!-- ADVERTISEMENT -->
-<div class="fixed bottom-5 right-5 z-50">
-  <img src="images/advt.jpg"
-       alt="Advertisement"
-       class="w-32 md:w-40 rounded-lg shadow-lg border">
-</div>
+
 </body>
 </html>
